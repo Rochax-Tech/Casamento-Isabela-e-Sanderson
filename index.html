@@ -1012,6 +1012,35 @@ function unmarkGift(id){if(!confirm('Remover status Presenteado?'))return;const 
 function unmarkReserve(id){if(!confirm('Remover reserva?'))return;const gifts=getGifts();const g=gifts.find(x=>x.id===id);if(g){g.reserved=false;g.reservedBy='';g.reservedMsg='';g.reservedAt='';}saveGifts(gifts);renderAdminGifts();renderAdminOverview();renderGifts();}
 function saveSettings(){const el=document.getElementById('settings-saved');el.style.display='block';setTimeout(()=>el.style.display='none',3000);}
 
+
+/* ====== EXPOSE FUNCTIONS TO GLOBAL SCOPE (required for onclick handlers with type=module) ====== */
+window.filterGifts      = filterGifts;
+window.openGiftModal    = openGiftModal;
+window.closeGiftModal   = closeGiftModal;
+window.goToStep2        = goToStep2;
+window.confirmGift      = confirmGift;
+window.openReserveModal = openReserveModal;
+window.closeReserveModal= closeReserveModal;
+window.confirmReserve   = confirmReserve;
+window.submitMessage    = submitMessage;
+window.openAdminOverlay = openAdminOverlay;
+window.closeAdminOverlay= closeAdminOverlay;
+window.doAdminLogin     = doAdminLogin;
+window.adminLogout      = adminLogout;
+window.adminTab         = adminTab;
+window.toggleGiftForm   = toggleGiftForm;
+window.cancelGiftForm   = cancelGiftForm;
+window.saveGift         = saveGift;
+window.editGift         = editGift;
+window.deleteGift       = deleteGift;
+window.unmarkGift       = unmarkGift;
+window.unmarkReserve    = unmarkReserve;
+window.deleteMessage    = deleteMessage;
+window.exportPayments   = exportPayments;
+window.saveSettings     = saveSettings;
+window.handleGiftImgUpload = handleGiftImgUpload;
+window.clearGiftImg     = clearGiftImg;
+
 /* ====== INIT ====== */
 syncFromFirebase().then(()=>startRealtimeSync());
 </script>
